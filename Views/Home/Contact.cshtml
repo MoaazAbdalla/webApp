@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+@model ContactUs
+<br />
+<section id="appointment" class="appointment section-bg">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Bize Ulaşın</h2>
+        </div>
+
+        <form asp-action="allmasaj" method="post" data-aos="fade-up" data-aos-delay="100">
+            <div class="form-row">
+                <div class="col-md-4 form-group">
+                    <input type="text" asp-for="Name" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                </div>
+                <div class="col-md-4 form-group">
+                    <input asp-for="Email" type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                    <div class="validate"></div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                </div>
+                <div class="col-md-4 form-group">
+                    <input type="tel" asp-for="Phone" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" asp-for="Message" name="message" rows="5" placeholder="Message "></textarea>
+                <div class="validate"></div>
+            </div>
+            <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+            </div>
+            <div class="text-center"> <button  type="submit" class="btn btn-success">Success</button></div>
+        </form>
+
+    </div>
+</section>
+
+
+
+
+
+
+

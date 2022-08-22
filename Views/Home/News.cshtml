@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "News";
+}
+@model List<News>
+
+
+<section id="about" class="about">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+        <div class="section-title">
+            <h2> @ViewBag.name</h2>
+        </div>
+            @foreach (var item in Model)
+            {
+                
+                <div class="section-title">
+
+                    <h5 class="text-info">@item.Title</h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-7" data-aos="fade-right">
+                        <img src="~/img/news/@item.img" width="650" height="450">
+                    </div>
+                    <div class="col-4" data-aos="fade-left">
+                        <h3>@item.Title</h3>
+                        <p class="font-italic">
+                            @item.Date
+                        </p>
+
+                        <p style="width:700px">
+                            @item.Topic
+                        </p>
+                    </div>
+                </div>
+                <hr />
+                <br />
+            }
+        </div>
+
+</section>
