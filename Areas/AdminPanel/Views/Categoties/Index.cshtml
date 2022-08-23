@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MyCreate.model.Categoty>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@ViewBag.name;
+<div class="container">
+    <div class="au-card recent-report">
+       <partial name="_CreateButton" />
+        <br />
+        <table class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Discription)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td style="width:20%">
+                            @Html.DisplayFor(modelItem => item.Discription)
+                        </td>
+                        <td style="width:150px">
+
+                            <partial name="_Operating" model="item.Id" />
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

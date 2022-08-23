@@ -1,0 +1,34 @@
+﻿@model MyCreate.model.Categoty
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="au-card recent-report">
+
+    <hr />
+    <div class="container">
+        <h4>Categoty</h4>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Discription)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Discription)
+            </dd>
+        </dl>
+    
+        <div class="form-group row">
+            <div class="col-5 ">
+                <partial name="_DetailsPage" />
+            </div>
+        </div>
+</div>
+    </div>
+

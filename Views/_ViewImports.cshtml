@@ -1,3 +1,6 @@
-﻿@using MyCreate
+﻿@using Microsoft.Extensions.Localization
+
+@using MyCreate
+@inject IStringLocalizer<SharedResource> sharedResource
 @using MyCreate.model
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

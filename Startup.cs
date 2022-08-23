@@ -13,6 +13,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyCreate.Data;
 using MyCreate.model;
+using MyCreate;
+using System.Reflection;
+using Microsoft.Extensions.Localization;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace Hazirweb
 {
@@ -28,6 +34,24 @@ namespace Hazirweb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
+            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+
+            //services.AddMvc()
+            //    .AddViewLocalization()
+            //    .AddDataAnnotationsLocalization(option =>
+            //    {
+            //        var type = typeof(SharedResource);
+            //        var assemblyName = new AssemblyName(type.GetTypeInfo
+            //            ().Assembly.FullName);
+            //        var factory = services.BuildServiceProvider
+            //        ().GetService<IStringLocalizerFactory>();
+            //        var localizer = factory.Create("SharedResource", assemblyName.Name);
+            //        option.DataAnnotationLocalizerProvider = (t, f) => localizer;
+
+
+            //    });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -55,6 +79,23 @@ namespace Hazirweb
                     x.Password.RequireUppercase = false;
                     x.Password.RequiredLength = 3;
                 });
+
+            services.Configure<RequestLocalizationOptions>(
+              opt =>
+              {
+                  var supportedCulteres = new List<CultureInfo>
+                  {
+                        new CultureInfo("en-US"),
+                new CultureInfo("fr-FR"),
+                new CultureInfo("de-DE")
+
+                  };
+                  opt.DefaultRequestCulture = new RequestCulture("en");
+                  opt.SupportedCultures = supportedCulteres;
+                  opt.SupportedUICultures = supportedCulteres;
+
+              });
+            //services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,10 +112,25 @@ namespace Hazirweb
                 app.UseHsts();
             }
 
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("fr-FR"),
+                new CultureInfo("de-DE")
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+
+            });
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            app.UseCookiePolicy();  
 
             app.UseAuthentication();
 

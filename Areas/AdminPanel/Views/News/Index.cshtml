@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MyCreate.model.News>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="au-card recent-report">
+  
+
+    <div class="container">
+       <partial name="_CreateButtonNews" />
+        <br />
+        <center>
+
+            <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                <thead class="thead-light">
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.img)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Topic)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.categoty)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table table-bordered table-hover">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td style="width:25%">
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td style="width:10%">
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                <img src="~/img/news/@item.img" width="100" height="100" />
+                            </td>
+                            <td style="width:20%">
+                                @Html.DisplayFor(modelItem => item.Topic)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.categoty.Name)
+                            </td>
+                            <td style="width:150px">
+
+                                <partial name="_Operating" model="item.Id" />
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </center>
+    </div>
+</div>

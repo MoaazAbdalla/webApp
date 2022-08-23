@@ -59,22 +59,22 @@
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="/home"> <i class="fas fa-user-friends"></i> Ana sayfa</a></li>
+                    <li class="active"><a href="/home"> <i class="fas fa-user-friends"></i>@sharedResource["Home"]</a></li>
                     @*<li><a href="~/Categoties">Categoties</a></li>*@
                     @*<li><a href="~/News">News</a></li>*@
 
 
 
-                    <li><a href="~/Home/Teammember"><i class="fas fa-user-friends"></i>  Takım üyeleri</a></li>
-                    <li><a href="~/Home/contact"><i class="fas fa-dove"></i> Bize Ulaşın</a></li>
-                    <li><a href="~/Home/readmasaj"><i class="fas fa-comment-alt"></i> YORUMLAR</a></li>
-                    <li><a href="~/AdminPanel/default"> <i class="fas fa-users-cog"></i> Admin Panel</a></li>
+                    <li><a href="~/Home/Teammember"><i class="fas fa-user-friends"></i>@sharedResource["Home"]</a></li>
+                    <li><a href="~/Home/contact"><i class="fas fa-dove"></i>@sharedResource["Home"]</a></li>
+                    <li><a href="~/Home/readmasaj"><i class="fas fa-comment-alt"></i> @sharedResource["Home"]</a></li>
+                    <li><a href="~/AdminPanel/default"> <i class="fas fa-users-cog"></i>@sharedResource["Admin Panel"]</a></li>
                     <li style="margin-left:40px" class="drop-down">
                         <a><i class="fas fa-globe-asia"></i></a>
                         <ul>
-                            <li><a class="dropdown-item" href="?culture=tr-TR">TR</a></li>
-                            <li><a class="dropdown-item" href="?culture=en-US">EN</a></li>
-                            <li><a class="dropdown-item" href="?culture=ar-SA">AR</a></li>
+                            <li><a class="dropdown-item" asp-controller="language" asp-action="change" asp-route-culture="fr-FR">TR</a></li>
+                            <li><a class="dropdown-item" asp-controller="language" asp-action="change" asp-route-culture="en-US">EN</a></li>
+                            @*<li><a class="dropdown-item" href="?culture=ar-SA">AR</a></li>*@
                         </ul>
                     </li>
                     <partial name="_LoginPartial" />

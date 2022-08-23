@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyCreate.model.Teammember>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    
+    <div class="au-card recent-report">
+
+        <partial name="_CreateButtonTeammembers" />
+        <br />
+
+        <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Jop)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Jop)
+                        </td>
+                        <td>
+                            <img src="~/img/news/@item.Image" width="100" height="100" />
+                        </td>
+                        <td style="width:150px">
+
+                            <partial name="_Operating" model="item.Id" />
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@model MyCreate.model.News
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<hr />
+<div class="au-card recent-report">
+
+    <div class="container">
+        <h2>Edit</h2>
+
+        <h4>News</h4>
+        <center>
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Date" class="control-label"></label>
+                            <input asp-for="Date" class="form-control" />
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="img" class="control-label"></label>
+                            <img src="~/img/news/@Model.img" width="300" height="300" />
+                            <input asp-for="File" type="file" class="form-control" />
+                            <span asp-validation-for="img" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Topic" class="control-label"></label>
+                            <input asp-for="Topic" class="form-control" />
+                            <span asp-validation-for="Topic" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="categoeyId" class="control-label"></label>
+                            <select asp-for="categoeyId" class="form-control" asp-items="ViewBag.categoeyId"></select>
+                            <span asp-validation-for="categoeyId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12 ">
+                                <partial name="_EditButton" />
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+        </center>
+    </div>
+
+</div>
